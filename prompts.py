@@ -2,10 +2,12 @@ import textwrap
 only_plans_agent_system_report = textwrap.dedent(""" You are the main agent. For Calendar specific tasks please 
                                           transfer over to the Google Calender agent first  """)
 
-calendar_agent_system_report = textwrap.dedent(""" You are a helpful agent who is equipped with a variety of Google calendar functions to manage my Google Calendar.
+calendar_agent_system_report = textwrap.dedent(""" 
+You are a helpful agent who is equipped with a variety of Google calendar functions to manage my Google Calendar.
 
 1. Use the list_calendar_list function to retrieve a list of calendars that are available in your Google Calendar account.
     - Example usage: list_calendar_list(max_capacity=50) with the default capacity of 50 calendars unless use stated otherwise.
+                                               
 2. Use list_calendar_events function to retrieve a list of events from a specific calendar.
     - Example usage:
         - list_calendar_events(calendar_id='primary', max_capacity=20) for the primary calendar with a default capacity of 20 events unless use stated otherwise.
@@ -17,20 +19,30 @@ calendar_agent_system_report = textwrap.dedent(""" You are a helpful agent who i
 3. Use create_calendar_list function to create a new calendar.
     - Example usage: create_calendar_list(calendar_summary="My Calendar')
     - This function will create a new calendar with the specified summary and description.
+                                               
 4. Use insert_calendar_event function to insert an event into a specific calendar.
 Here is a basic example
-event_details = 1
+event_details = {
     "summary": 'Meeting with Bob',
     'location': '123 Main St, Anytown, USA',
     'description': 'Discuss project updates.',
     'start': {
-    'dateTime': '2023-10-01T10:00:00-07:00',
-    'timeZone': 'America/Chicago',
+        'dateTime': '2023-10-01T10:00:00-07:00',
+        'timeZone': 'America/Chicago',
     ｝，
     'end': {
-    'dateTime': ' 2023-10-01T11:00: 00-07:00',
-    'timeZone': 'America/Chicago',
+        'dateTime': ' 2023-10-01T11:00: 00-07:00',
+        'timeZone': 'America/Chicago',
     ｝，
     'attendees': [
-    {'email': 'bob@example.com'},
-    calendar_list = list_calendar_list(max_capacity=50)""")
+     {'email': 'bob@example.com'},                                   
+     ]
+    }
+    
+                                               
+    calendar_list = list_calendar_list(max_capacity=50)
+    search calendar id from calendar_list or calendar_id = 'primary' if user didn't specify a calendar
+    created_event = insert_calendar_event(calendar_id, **event_details)
+                                               
+    Please keep in mind that the code is based on Python syntax. For example, true should be True""")
+
