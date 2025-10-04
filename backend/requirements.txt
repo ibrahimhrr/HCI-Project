@@ -1,0 +1,24 @@
+Requirements 
+
+These define the core features:
+    Event Input:
+        User can enter:
+            Event name
+            Duration (in minutes)
+            Preferred date/time (optional)
+            Priority (optional)
+            Location (optional)
+    Calendar Integration:
+        Read user’s existing events from Google Calendar.
+        Detect filled slots accurately.
+        Handle recurring events.
+    Scheduling Logic:
+        Scan the calendar for free slots.
+        Return a ranked list of possible time slots.
+    Event Scheduling:
+        Let user select a suggested slot.
+        Automatically insert the event into the user’s calendar.
+    Frontend Interaction:
+        Minimalistic UI to input events.
+        Display suggested free slots.
+        Confirm and schedule the event
