@@ -5,3 +5,4 @@ we will use hardcoded examples
 
 import datetime
 
+event=[]
